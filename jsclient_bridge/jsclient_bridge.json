@@ -1,0 +1,19 @@
+{
+  "data": "all",
+
+  "options": {
+      "omnislibrary": "",
+      "omnisclass": "",
+      "webserverurl": "",
+      "omnisserverandport": "",
+      "serverport": 0
+  },
+
+  "optionsDescriptions": {
+    "omnislibrary": "The name of the Omnis library containing the form.",
+    "omnisclass": "The name of the Remote Form class to load.",
+    "webserverurl": "(Optional) The URL to the Omnis web server plugin. Leave empty/omit to connect directly to the local Omnis instance.",
+    "omnisserverandport": "(Optional) $serverport/<ipaddress>:$serverport of Omnis server. Leave empty if using a direct connection.",
+    "serverport": "Omnis' $serverport. If set to zero, assumes the serverport is the web socket port -1 (the default)"
+  }
+}

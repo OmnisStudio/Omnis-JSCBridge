@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This makes mobile device support work -->
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=0"> 
+
+<!-- The scripts and style sheets must be present at relative URLs from this page -->
+
+<link type="text/css" href="css/omn_dlg.css" rel="stylesheet" media="print,screen" />
+<link type="text/css" href="css/omn_menu.css" rel="stylesheet" media="print, screen" />
+<link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+<link type="text/css" href="css/slick.grid.css" rel="stylesheet" />
+<link type="text/css" href="css/slick.columnpicker.css" rel="stylesheet" />
+<link type="text/css" href="css/slick.pager.css" rel="stylesheet" />
+
+<!-- Must occur after other stylesheets e.g. jquery-ui-1.8.15.custom.css, as it overrides values -->
+<link type="text/css" href="css/omnis.css" rel="stylesheet"/>
+
+<link type="text/css" href="css/native_switch.css" rel="stylesheet"/>
+<link type="text/css" href="css/native_slider.css" rel="stylesheet"/>
+<link type="text/css" href="css/native_list.css" rel="stylesheet"/>
+
+<!-- Edit user.css to specify any CSS classes assigned using the $cssclassname property -->
+<link type="text/css" href="css/user.css" rel="stylesheet" media="print, screen" />
+
+<!-- Omnis Studio JavaScript client scripts -->
+<script type="text/javascript" src="dev_scripts/ssz.js"></script>
+<script type="text/javascript" src="dev_scripts/omjsclnt.js"></script>
+<script type="text/javascript" src="dev_scripts/omjqclnt.js"></script>
+<!-- The following placeholder is replaced with either a script tag for the remote task string table or nothing when there is no remote task string table -->
+%%strings%%
+
+<title></title>
+</head>
+<body onload="jOmnis.onLoad()" onunload="jOmnis.onUnload()" style="margin:0;overflow:auto">
+<!--
+    The omnisform object is where the Omnis JavaScript client remote form will be embedded in the browser.
+    The property data-webserverurl identifies the HTTP URL of either the Omnis development environment/runtime or the
+    Web Server (the latter case applies when using the Omnis web server plugin to run the Omnis application server along-side
+    a Web Server).
+    For example: 
+        When testing with the development environment, the data-webserverurl might be http://127.0.0.1:5000.  In this case, 
+        data-omnisserverandport is empty.
+        
+        When using a Web Server, the data-webserverurl might be http://www.myhost.com/scripts/omnisapi.dll.  In this case, data-omnisserverandport
+        tells the Omnis web server plugin how to connect to the Omnis application server, so for example it might be "5000" if the Omnis
+        Application server is at port 5000 on the same machine as the web server, or "111.222.000.111:5000" if the Omnis application server
+        is at port 5000 on the machine with IP address 111.222.000.111.
+        
+    data-omnislibrary and data-omnisclass identify the remote form to be used as the initial form hosted by the omnisform object.
+       
+    data-dss specifies the designed screen sizes for the library.This attribute value is a comma separated list of portrait or square screen size names
+    from the eScreenSize object in ssz.js (Desktop is not required as it is always one of the designed screen sizes). E.g. data-dss="js320x480Portrait,js768x1024Portrait,js345x345"
+       
+    The remaining parameters are parameters passed in the row variable parameter to $construct of the remote task and form.
+    If you add another Omnis object to the form, set its id to omnisobject2 and so on...
+		
+		Special Parameters:
+			_PS_ in the data-webserverurl is replaced with the address of the server from which this HTML page is being served e.g.
+			If the page is at http://127.0.0.1:5000/jschtml/test.htm, then _PS_ will be replaced with http://127.0.0.1:5000
+
+			data-commstimeout is a timeout in seconds - when the client sends a message to the server it must respond within this timeout.
+			When the timeout occurs, the client asks the user if they want to continue waiting for the response, and they have the option to 
+			abort the request.
+			A value of zero means no timeout is applied.
+-->
+<div id="omnisobject1" style="position:absolute;top:0px;left:0px" data-webserverurl="" data-omnisserverandport="" data-omnislibrary="" data-omnisclass="" data-dss="" data-param1="" data-param2="" data-commstimeout="0">
+</div>
+
+</body>
+</html>
