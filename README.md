@@ -5,12 +5,13 @@ Omnis Studio **8.1.6** or later.
 
 * Copy the **jsclient_bridge** folder into Omnis' **htmlcontrols** folder (in the application area).
 * Copy the following folders from Omnis' **html** directory (in the _writeable files_ section of the install) into 
-**htmlcontrols/jsclient_bridge**, overwriting those that are there (so you are using the latest versions).
+**htmlcontrols/jsclient_bridge**.
     * **css**
     * **scripts**
     * **icons**
     * **images** 
 
+(this jsclient_bridge folder, with JS Client resources, can now be moved around as a complete component - e.g. added to a runtime tree)
 
 ### Windows:
 Windows specifically requires some Chromium flags to be set, in order to allow CORS inside oBrowser
