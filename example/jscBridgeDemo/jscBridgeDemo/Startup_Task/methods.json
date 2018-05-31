@@ -1,0 +1,30 @@
+[
+	{
+		"name": "$construct",
+		"ident": 0,
+		"order": 16384,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lPath",
+				"order": 1,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$destruct",
+		"ident": 1,
+		"order": 16385,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		]
+	}
+]

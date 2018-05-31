@@ -1,0 +1,6 @@
+Calculate tSess.$opencreate as kTrue
+Calculate lPath as con(left(sys(10),rpos(sys(9),sys(10))))
+Calculate lPath as con(lPath,"jscbridgeDemo.db")
+
+Do tSess.$logon(lPath,"","","jscBridgeDemo") Returns #F
+;  Do $clib.$windows.wMonitor.$openonce()     ;; added by Monitor remote task wizard

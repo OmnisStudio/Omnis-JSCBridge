@@ -1,0 +1,17 @@
+{
+	"classtype": "kSystemtable",
+	"internalversion": 2,
+	"properties": {
+		"componenttype": "kCompStoreHidden",
+		"createdate": "2018-05-07 16:22:13",
+		"desc": "",
+		"external": false,
+		"moddate": "2018-05-22 10:26:47",
+		"showascheckedout": false,
+		"userinfo": "",
+		"version": ""
+	},
+	"libs": [
+		"Document Viewer Library"
+	]
+}

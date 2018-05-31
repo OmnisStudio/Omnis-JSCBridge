@@ -1,0 +1,107 @@
+{
+	"classtype": "kRemoteForm",
+	"internalversion": 439,
+	"designtaskname": "rt1",
+	"nextident": 1015,
+	"lastgroupident": 0,
+	"cvardefs": [
+
+	],
+	"ivardefs": [
+		{
+			"name": "iCustomerDetails",
+			"order": 2,
+			"type": "kRow",
+			"subtype": "sCustomers",
+			"sublen": 0
+		},
+		{
+			"name": "iInJSCBridge",
+			"order": 3,
+			"type": "kBoolean",
+			"subtype": 0,
+			"sublen": 0,
+			"initval": "kFalse"
+		},
+		{
+			"name": "iName",
+			"order": 1,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "iTestDate",
+			"order": 4,
+			"type": "kDate",
+			"subtype": "kDate1900",
+			"sublen": 0,
+			"initval": "#D"
+		},
+		{
+			"name": "iTestList",
+			"order": 5,
+			"type": "kList",
+			"subtype": "",
+			"sublen": 0
+		}
+	],
+	"properties": {
+		"aligntogrid": false,
+		"alpha": 255,
+		"alwaysenabledobject": "",
+		"animatelayouttransitions": true,
+		"backalpha": 255,
+		"backcolor": "RGB(255,255,255)",
+		"backpattern": 0,
+		"cancelkeyobject": "",
+		"collectperformancedata": false,
+		"componenticon": 0,
+		"componenttype": "kCompStoreHidden",
+		"contextmenu": "",
+		"createdate": "2018-05-07 16:22:23",
+		"currentlayoutbreakpoint": 320,
+		"defaultappearance": "kAppearanceiOS",
+		"desc": "",
+		"designshowmobiletitle": true,
+		"disabledefaultcontextmenu": false,
+		"editor": "",
+		"editordata": "",
+		"events": "",
+		"external": true,
+		"forecolor": "RGB(255,255,255)",
+		"horzgrid": 8,
+		"horzscroll": false,
+		"inheritedorder": 1,
+		"issupercomponent": false,
+		"layoutbreakpoints": "320,500",
+		"layouttype": "kLayoutTypeResponsive",
+		"left": 295,
+		"moddate": "2018-05-24 15:49:05",
+		"okkeyobject": "",
+		"serverlessclient": false,
+		"showascheckedout": false,
+		"showgrid": false,
+		"sizetogrid": false,
+		"startfield": 0,
+		"title": {
+			"type": 0,
+			"calc": "New remote form"
+		},
+		"top": 231,
+		"userinfo": "",
+		"version": "",
+		"vertgrid": 8,
+		"vertscroll": false
+	},
+	"layout": {
+		"width": 786,
+		"height": 476,
+		"320": {
+			"height": 0
+		},
+		"500": {
+			"height": 0
+		}
+	}
+}

@@ -1,0 +1,7 @@
+On evClick
+	If iInJSCBridge
+		Calculate lData as iCustomerDetails
+		Calculate lDate as iTestDate
+		Calculate lList as iTestList
+		JavaScript: jControl.callbackObject.sendMessageToFatClient("SaveCustomer", lData);
+	End If

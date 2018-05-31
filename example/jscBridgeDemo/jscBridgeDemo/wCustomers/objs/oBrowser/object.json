@@ -1,0 +1,101 @@
+{
+	"ident": 1019,
+	"order": 4,
+	"objtype": "kComponent",
+	"componentlib": "OBrowser Library",
+	"componentctrl": "OBrowser Control",
+	"properties": {
+		"active": true,
+		"align": "kLeftJst",
+		"allowjsdraganddrop": false,
+		"alpha": 255,
+		"applycss": false,
+		"backalpha": 255,
+		"backcolor": "kColorWindow",
+		"candropcursor": 0,
+		"contextmenu": "",
+		"cssextra": "",
+		"dataname": "",
+		"desgroup": 0,
+		"designactive": true,
+		"deslock": false,
+		"disabledefaultcontextmenu": false,
+		"disablefocus": false,
+		"disablepluginsmacos": false,
+		"disablesystemfocus": false,
+		"dragborder": false,
+		"dragiconid": 0,
+		"dragmode": "kNoDragging",
+		"dragobjectbarcolor": "kColorDefault",
+		"dragrange": "kRangeAll",
+		"dropmode": "kAcceptNone",
+		"edgefloat": "kEFposnClient",
+		"effect": "kBorderNone",
+		"enabled": true,
+		"fieldstyle": "",
+		"font": 2,
+		"fontsize": 0,
+		"fontstyle": "kPlain",
+		"height": 442,
+		"helpfile": 0,
+		"hiliteline": false,
+		"htmlcontroloptions": {
+			"type": [
+				{
+					"name": "webserverurl",
+					"order": 1,
+					"type": "kCharacter",
+					"subtype": "kSimplechar",
+					"sublen": 100000000
+				},
+				{
+					"name": "omnislibrary",
+					"order": 2,
+					"type": "kCharacter",
+					"subtype": "kSimplechar",
+					"sublen": 100000000
+				},
+				{
+					"name": "omnisclass",
+					"order": 3,
+					"type": "kCharacter",
+					"subtype": "kSimplechar",
+					"sublen": 100000000
+				},
+				{
+					"name": "omnisserverandport",
+					"order": 4,
+					"type": "kCharacter",
+					"subtype": "kSimplechar",
+					"sublen": 100000000
+				},
+				{
+					"name": "serverport",
+					"order": 5,
+					"type": "kInteger",
+					"subtype": "k64bitint",
+					"sublen": 0
+				}
+			],
+			"data": {
+				"webserverurl": "",
+				"omnislibrary": "jscBridgeDemo",
+				"omnisclass": "jsCustomerDetails",
+				"omnisserverandport": "",
+				"serverport": 0
+			}
+		},
+		"keyevents": false,
+		"left": 204,
+		"nodropcursor": 0,
+		"objlink": 0,
+		"statusevents": false,
+		"textcolor": "kColorWindowText",
+		"tooltip": "",
+		"top": 0,
+		"urlorcontrolname": "jsclient_bridge",
+		"userinfo": "",
+		"visible": true,
+		"width": 403
+	}
+}

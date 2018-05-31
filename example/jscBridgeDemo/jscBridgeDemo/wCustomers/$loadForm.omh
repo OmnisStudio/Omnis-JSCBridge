@@ -1,0 +1,7 @@
+Calculate lJSCBridgeRow.webserverurl as con("http://127.0.0.1:",$prefs.$serverport)
+Calculate lJSCBridgeRow.omnislibrary as $clib().$name
+Calculate lJSCBridgeRow.omnisclass as "jsCustomerDetails"
+Do $cinst.$objs.oBrowser.$callmethod("loadForm",lJSCBridgeRow)
+
+Do lJSCMessageRow.$assigncols("SetCustomerDetails",iCustomersList.[iCustomersList.$line])
+Do $cinst.$objs.oBrowser.$callmethod("sendMessageToJSClient",lJSCMessageRow)

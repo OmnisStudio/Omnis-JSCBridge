@@ -1,0 +1,14 @@
+On evControlEvent
+	Send to trace log {JS Bridge Message: [pInfo.id]}
+	Switch pInfo.id
+		Case "CONTROL_READY"     ;; The control is ready - you may now call methods on it.
+			;  Do $cinst.$loadForm()
+			
+		Case "JSC_LOADED"     ;; The JS Client and form(s) have loaded and can now be interacted with
+			Do lJSCMessageRow.$assigncols("SetCustomerDetails",iCustomersList.[iCustomersList.$line])
+			Do $cinst.$objs.oBrowser.$callmethod("sendMessageToJSClient",lJSCMessageRow)
+			
+		Case "SaveCustomer"
+			Breakpoint
+			Do $cinst.$saveCustomer(pInfo.data)
+	End Switch

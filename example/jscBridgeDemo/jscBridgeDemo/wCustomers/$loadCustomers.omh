@@ -1,0 +1,6 @@
+Do tSess.$newstatementref() Returns lStmt
+Do lStmt.$execdirect("SELECT * FROM Customers") Returns #F
+Do lStmt.$fetch(iCustomersList,kFetchAll)
+
+Calculate iCustomersList.$line as 1
+Do $cinst.$redraw()

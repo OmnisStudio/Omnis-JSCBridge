@@ -1,0 +1,4 @@
+On evClick     ;; Event Parameters - pRow( Itemreference )
+	For i from 1 to 7 step 1
+		Open window instance wCustomers/*/STK
+	End For

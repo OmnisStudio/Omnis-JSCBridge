@@ -1,0 +1,19 @@
+[
+	{
+		"name": "$event",
+		"ident": 0,
+		"order": 16384,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lJSCMessageRow",
+				"order": 1,
+				"type": "kRow",
+				"subtype": "sHCMessage",
+				"sublen": 0
+			}
+		]
+	}
+]

@@ -1,0 +1,5 @@
+;  Enter your initialization code here
+;  Breakpoint
+Do iTestList.$define("","")
+Do iTestList.$add("one","Aaa")
+Do iTestList.$add("two","Bbb")

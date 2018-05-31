@@ -1,0 +1,7 @@
+Switch pMessageID
+	Case "SetCustomerDetails"
+		Calculate iCustomerDetails as pData
+	Case "NewCustomer"
+		Do iCustomerDetails.$clear()
+		Calculate iCustomerDetails._ID as 0
+End Switch

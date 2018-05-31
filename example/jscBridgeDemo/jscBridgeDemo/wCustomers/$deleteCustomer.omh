@@ -1,0 +1,5 @@
+If iCustomersList.$line>0
+	Do tSess.$newstatementref() Returns lStmt
+	Do lStmt.$execdirect(con("DELETE FROM Customers WHERE _ID=",iCustomersList._ID)) Returns #F
+	Do $cinst.$loadCustomers()
+End If

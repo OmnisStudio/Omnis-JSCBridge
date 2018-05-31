@@ -1,0 +1,14 @@
+Do tSess.$newstatementref() Returns lStmt
+
+If pCustomer._ID>0     ;; Update Customer
+	Calculate lWhere as con(" WHERE _ID=",pCustomer._ID)
+	Do pCustomer.$cols.$remove(pCustomer.$cols._ID)
+	Do tSess.$updatenames(pCustomer) Returns lSQL
+	Do lStmt.$execdirect(con("UPDATE Customers ",lSQL,lWhere)) Returns #F
+Else     ;; Insert new Customer
+	Do pCustomer.$cols.$remove(pCustomer.$cols._ID)
+	Do tSess.$insertnames(pCustomer) Returns lSQL
+	Do lStmt.$execdirect(con("INSERT INTO Customers ",lSQL)) Returns #F
+End If
+
+Do $cinst.$loadCustomers()

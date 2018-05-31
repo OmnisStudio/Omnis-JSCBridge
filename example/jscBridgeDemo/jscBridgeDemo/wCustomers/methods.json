@@ -1,0 +1,141 @@
+[
+	{
+		"name": "$construct",
+		"ident": 1,
+		"order": 1,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lJSCBridgeRow",
+				"order": 2,
+				"type": "kRow",
+				"subtype": "sJSCHtml",
+				"sublen": 0
+			},
+			{
+				"name": "lJSCMessageRow",
+				"order": 3,
+				"type": "kRow",
+				"subtype": "sHCMessage",
+				"sublen": 0
+			},
+			{
+				"name": "lPath",
+				"order": 1,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$destruct",
+		"ident": 2,
+		"order": 2,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+
+		],
+		"empty": true
+	},
+	{
+		"name": "$loadCustomers",
+		"ident": 0,
+		"order": 3,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lStmt",
+				"order": 1,
+				"type": "kObjectref",
+				"subtype": "",
+				"sublen": 0
+			}
+		]
+	},
+	{
+		"name": "$loadForm",
+		"ident": 3,
+		"order": 4,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lJSCBridgeRow",
+				"order": 1,
+				"type": "kRow",
+				"subtype": "sJSCHtml",
+				"sublen": 0
+			},
+			{
+				"name": "lJSCMessageRow",
+				"order": 2,
+				"type": "kRow",
+				"subtype": "sHCMessage",
+				"sublen": 0
+			}
+		]
+	},
+	{
+		"name": "$saveCustomer",
+		"ident": 4,
+		"order": 5,
+		"pvardefs": [
+			{
+				"name": "pCustomer",
+				"order": 2,
+				"type": "kRow",
+				"subtype": "sCustomers",
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "lSQL",
+				"order": 3,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "lStmt",
+				"order": 1,
+				"type": "kObjectref",
+				"subtype": "",
+				"sublen": 0
+			},
+			{
+				"name": "lWhere",
+				"order": 4,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			}
+		]
+	},
+	{
+		"name": "$deleteCustomer",
+		"ident": 5,
+		"order": 6,
+		"pvardefs": [
+
+		],
+		"lvardefs": [
+			{
+				"name": "lStmt",
+				"order": 1,
+				"type": "kObjectref",
+				"subtype": "",
+				"sublen": 0
+			}
+		]
+	}
+]
