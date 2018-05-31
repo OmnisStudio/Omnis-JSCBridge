@@ -87,7 +87,7 @@ You would probably do this using the **JavaScript:** command from a client-execu
 oBrowser's **evControlEvent** will be fired when the fat client receives a message from the JS client.
 
 * **pInfo.id** will contain the message ID.
-* **pInfo.data** wil contain any data sent with the message.
+* **pInfo.data** will contain any data sent with the message.
 
 The control sends some special messages automatically, with the following IDs:
 
@@ -121,7 +121,7 @@ Column Name | Type       | Column Value
 ----------- | -----------| ---------------------
 messageID   | Character  | An identifier for the message.
 data        | Any        | The data to pass through to the JS client. Use a Row to send complex data.
-form        | Character  | _(Optional)_ The name of the form to pass the message to. If omitted, will (vaguely) attempt to get the active form.
+form        | Character  | _(Optional)_ The name of the form to pass the message to. If omitted, will _attempt_ to get the active form.
 
 Example:
 
@@ -158,5 +158,5 @@ If you use the context menu on macOS to test your window, you may find that the 
 * Due to the threading model on macOS (oBrowser executes client code on the main thread), sending a synchronous disconnect message to Omnis causes hangs.
     
     * To avoid this, the JS Client disconnect message is sent to Omnis asynchronously - this does however mean that there's a chance the disconnect message _may_ not reach Omnis, and the Remote Task instance is not closed.
-        * This should not cause licensing issues, as all instances of of oBrowser should use the same connection license.
+        * This should not cause licensing issues, as all instances of oBrowser should use the same connection license.
         * Make sure to set a **$timeout** on your Remote Task, so they'll be closed eventually. 
