@@ -1,7 +1,7 @@
-#Requirements
+# Requirements
 Omnis Studio **8.1.6** or later.
 
-#Installation
+# Installation
 
 * Copy the **jsclient_bridge** folder into Omnis' **htmlcontrols** folder (in the application area).
 * Copy the following folders from Omnis' **html** directory (in the _writeable files_ section of the install) into 
@@ -12,7 +12,7 @@ Omnis Studio **8.1.6** or later.
     * **images** 
 
 
-###Windows:
+### Windows:
 Windows specifically requires some Chromium flags to be set, in order to allow CORS inside oBrowser
 (to allow access to localhost from file:// URLs).
 
@@ -24,9 +24,9 @@ Add the following to **config.json**, inside the **obrowser** section:
      ]
  
 
-#Usage
+# Usage
 
-##Loading a Form:
+## Loading a Form:
 
 1) Add an **oBrowser** external component to your window.
 2) Set oBrowser's **$urlorcontrolname** property to '**jsclient_bridge**'.
@@ -39,10 +39,10 @@ If you wish to change the form, call oBrowser's **$callmethod()**, passing '**lo
 This row could also optionally contain '**webserverurl**'  and/or '**omnisserverandport**' cols, if you wish to load a form
 hosted elsewhere.
 
-##Messaging
-###Fat Client to JS Client
+## Messaging
+### Fat Client to JS Client
 
-####Sending:
+#### Sending:
 You use oBrowser's **$callmethod()** method to call the **sendMessageToJSClient** method.
 
 This takes a Row containing a column named **messageID** (type Character) and a column named **data** (any supported type).
@@ -60,7 +60,7 @@ If the form has not yet loaded, the message will be deferred until it has.
 You **must**, however, wait until the **CONTROL_READY** message has been fired before attempting to send a message (see below).
 
 
-####Receiving:
+#### Receiving:
 You should implement a private _class_ method on the remote form which oBrowser is running named **htmlcontrolMessage** 
 (No '$'. It can be client- or server-executed).
 
@@ -68,9 +68,9 @@ This method will receive 2 parameters - the first will be the **messageID** pass
 will be the **data** passed from the fat client.
 
 
-###JS Client to Fat Client
+### JS Client to Fat Client
 
-####Sending:
+#### Sending:
 You need to execute the following JavaScript code to send a message to the fat client:
     
     jControl.callbackObject.sendMessageToFatClient(pID, pData);
@@ -82,7 +82,7 @@ Could also be a _JavaScript object_ containing these types (it will be converted
 You would probably do this using the **JavaScript:** command from a client-executed method.
 
 
-####Receiving:
+#### Receiving:
 oBrowser's **evControlEvent** will be fired when the fat client receives a message from the JS client.
 
 * **pInfo.id** will contain the message ID.
@@ -93,9 +93,9 @@ The control sends some special messages automatically, with the following IDs:
 * **CONTROL_READY**: The control has initialised, the web socket is connected, and you may now call methods on it.
 * **JSC_LOADED**: The Omnis JavaScript client has loaded, along with the initial form(s).
 
-#API
+# API
 
-##Properties
+## Properties
 Properties are set on oBrowser's **$htmlcontroloptions** property.
 
 Property Name | Property Value
@@ -106,7 +106,7 @@ webserverurl  | The URL to the Omnis web server plugin. _(Optional for automatic
 omnisserverandport  | The **$serverport** or **ip-address:$serverport** of the Omnis server. _(Optional for automatic form loading)_ Omit to use the local Omnis server.
 serverport  | The **$serverport** Omnis. _(Optional)_ Only used for local connections, when _webserverurl_ is not provided. Only necessary if you've changed the **htmlControlPort** config.json option.
 
-##Methods
+## Methods
 Methods are called with oBrowser's **$callMethod** method.
 
 The first parameter is the **name** of the method you wish to call, the second parameter is the method's **parameter** (it can have only one).
@@ -148,9 +148,9 @@ Example:
     Do $cinst.$objs.oBrowser.$callMethod("loadForm", lRow)
     
     
-#Notes:
+# Notes:
 
-###macOS only
+### macOS only
 * The design window's context menu option to _Open Window..._ has extra processing which clears the whole execution stack (including any pending JS Client requests).
 If you use the context menu on macOS to test your window, you may find that the JS Client doesn't load.
 
