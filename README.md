@@ -1,162 +1,137 @@
-# Requirements
+ # Requirements
+
 Omnis Studio **8.1.6** or later.
 
-# Installation
+## Contents
 
-* Copy the **jsclient_bridge** folder into Omnis' **htmlcontrols** folder (in the application area).
-* Copy the following folders from Omnis' **html** directory (in the _writeable files_ section of the install) into 
-**htmlcontrols/jsclient_bridge**.
-    * **css**
-    * **scripts**
-    * **icons**
-    * **images** 
+##### OAUTH2
 
-(this jsclient_bridge folder, with JS Client resources, can now be moved around as a complete component - e.g. added to a runtime tree)
+This folder contains the source JSON files for the OAuth2 Omnis library which can be used to integrate your Omnis application with other third party services via OAuth2 standard.
 
-### Windows:
-Windows specifically requires some Chromium flags to be set, in order to allow CORS inside oBrowser
-(to allow access to localhost from file:// URLs).
 
-Add the following to **config.json**, inside the **obrowser** section:
+##### OAUTH2_DEMO
 
-    "cefSwitches": [
-        "allow-file-access-from-files",
-        "disable-web-security"
-     ]
- 
+This folder contains the source JSON files for the OAuth2 demo Omnis library which can be used to learn more about the OAuth2 library.
+
+
+##### OAUTH2_OmnisLibraries
+
+This folder contains the Omnis libraries (.lbs) for the OAuth2 standard and a demo.
 
 # Usage
 
-## Loading a Form:
+1) Create a variable of type **Object** and set the subtype to the **oAuth2** object in the OAUTH2 library.
 
-1) Add an **oBrowser** external component to your window.
-2) Set oBrowser's **$urlorcontrolname** property to '**jsclient_bridge**'.
-3) Edit oBrowser's **$htmlcontroloptions**, and set the **omnisclass** & **omnislibrary** columns.
-This will cause the form to be loaded automatically, and will also display the form in design mode.
-    * _If you wish to load a form from another Omnis server, you'll also need to populate the **webserverurl** and **omnisserverandport** properties._
+2) Create two public methods: $tokenReceived and $tokenError.
 
-If you wish to change the form, call oBrowser's **$callmethod()**, passing '**loadForm**' as first param, and a row with
-'**omnisclass**' and '**omnislibrary**' columns as the second param.
-This row could also optionally contain '**webserverurl**'  and/or '**omnisserverandport**' cols, if you wish to load a form
-hosted elsewhere.
+3) Call oAuth2's $init public method and pass the required parameters:
 
-## Messaging
-### Fat Client to JS Client
+		Do oAuth2.$init(pClientID, pClientSecret, pAccessCodeURL, pAccessTokenURL, [pScope, pRedirectURI])
+		
+4) Call oAuth2's $getToken public method and pass the required parameters in order to get the authorization token:
 
-#### Sending:
-You use oBrowser's **$callmethod()** method to call the **sendMessageToJSClient** method.
+		Do oAuth2.$getToken(pCallbackObject, [pCallbackMethodSuccessful=‘$tokenReceived’, pCallbackMethodError=‘$tokenError’, pFormInstance])
 
-This takes a Row containing a column named **messageID** (type Character) and a column named **data** (any supported type).
+5) If everything is successful, you will receive the following parameters in the $tokenReceived method in the specified pCallbackObject: access token, refresh token, expiry date (Date Time #FDT)
 
-In order to send complex data to the client, you would make the _data_ column type **Row**.
+6) If an error occurred, you will receive a row variable containing more details in the $tokenError method in the specified pCallbackObject.
 
-E.g:
+## Examples
 
-    Do lJSCMessageRow.$define(messageID, data)
-    Do lJSCMessageRow.$assigncols("SetCustomerDetails",iCustomersList.[iCustomersList.$line])
-    Do $cinst.$objs.oBrowser.$callmethod("sendMessageToJSClient",lJSCMessageRow)
-    
-If the form has not yet loaded, the message will be deferred until it has.
+**Fat client**
 
-You **must**, however, wait until the **CONTROL_READY** message has been fired before attempting to send a message (see below).
+	Do oAuth2.$init(lCLientID, lClientSecret, lAccessCodeURL, lAccessTokenURL, [lScope, lRedirectURI])
 
+	Do oAuth2.$getToken($cinst)
 
-#### Receiving:
-You should implement a private _class_ method on the remote form which oBrowser is running named **htmlcontrolMessage** 
-(No '$'. It can be client- or server-executed).
+After the oAuth2 flow is finished, the access token, refresh token and the #FDT formatted DateTime indicating the expiry date of the access token will be returned to the $tokenReceived method in the current instance that instantiated the oAuth2 object. You can also change both $tokenReceived and $tokenError such as in this example which comes after $init:
 
-This method will receive 2 parameters - the first will be the **messageID** passed from the fat client, and the second 
-will be the **data** passed from the fat client.
+	Do oAuth2.$getToken($cinst,'$receiveToken','$errorReceivingToken')
+
+**JavaScript client**
+
+	Do oAuth2.$init(lClientID, lClientSecret, lAccessCodeURL, lAccessTokenURL, [lScope, lRedirectURI])
+
+	Do oAuth2.$getToken($cinst,,,$cinst)
 
 
-### JS Client to Fat Client
-
-#### Sending:
-You need to execute the following JavaScript code to send a message to the fat client:
-    
-    jControl.callbackObject.sendMessageToFatClient(pID, pData);
-    
-* **pID** should be a string identifying the message.
-* **pData** should be a supported JavaScript data type (e.g. a _string_, _boolean_, _number_, _omnis_date_. 
-Could also be a _JavaScript object_ containing these types (it will be converted to a row), or an _omnis_raw_list_ or _omnis_list_ instance.).
-
-You would probably do this using the **JavaScript:** command from a client-executed method.
+After the oAuth2 flow is finished, the access token, refresh token and the #FDT formatted DateTime indicating the expiry date of the access token will be returned to the $tokenReceived method in the remote form instance that instantiated the oAuth2 object.
 
 
-#### Receiving:
-oBrowser's **evControlEvent** will be fired when the fat client receives a message from the JS client.
+## Details
 
-* **pInfo.id** will contain the message ID.
-* **pInfo.data** will contain any data sent with the message.
+Client ID – this will be provided by the third party service you are trying to access through OAuth2.
 
-The control sends some special messages automatically, with the following IDs:
+Client Secret – this will be provided by the third party service as well.
 
-* **CONTROL_READY**: The control has initialised, the web socket is connected, and you may now call methods on it.
-* **JSC_LOADED**: The Omnis JavaScript client has loaded, along with the initial form(s).
+Access Code URL – this will be the URL where the request for the access code is made. The third party service will provide this.
+
+Access Token URL – this will be the URL where the request for the access token is made. The third party service will provide this as well.
+
+Scope – this is optional, it will be added to the request headers. For example, some third party services will require you to pass a scope as well to determine which part of their service you can access. For example, Google’s Gmail API has different OAuth2 scopes: https://developers.google.com/identity/protocols/googlescopes
+
+pRedirectURI – you can use this parameter to pass in your own redirect URI. If it is not passed, Omnis will use a Web Service Server with a /code endpoint that receives GET requests in order to receive the access code which is successively exchanged for an access token.
 
 # API
 
-## Properties
-Properties are set on oBrowser's **$htmlcontroloptions** property.
+### Methods
+Methods can be called by creating a variable in your application of type Object and of subtype oAuth2 object in the OAUTH2 library.
 
-Property Name | Property Value
-------------- | --------------
-omnislibrary  | The name of the Omnis library containing the form to load automatically. _(Required for automatic form loading)_
-omnisclass    | The name of the Remote Form class to load automatically. _(Required for automatic form loading)_
-webserverurl  | The URL to the Omnis web server plugin. _(Optional for automatic form loading)._ Omit to use the local Omnis server.
-omnisserverandport  | The **$serverport** or **ip-address:$serverport** of the Omnis server. _(Optional for automatic form loading)_ Omit to use the local Omnis server.
-serverport  | The **$serverport** Omnis. _(Optional)_ Only used for local connections, when _webserverurl_ is not provided. Only necessary if you've changed the **htmlControlPort** config.json option.
+**$init** 
+Method to initialise the oAuth2 object. Usually, $init is the first method that is called.
 
-## Methods
-Methods are called with oBrowser's **$callMethod** method.
+Parameter | Type | Value
+-|-|-
+Client ID | Character | Client ID provided by the third party service you are trying to access.
+Client Secret | Character | Client Secret provided by the third party service you are trying to access.
+Auth Code URL | Character | Authorization code URL provided by the third party service you are trying to access.
+Auth Token URL | Character | Authorization Token URL provided by the third party service you are trying to access.
+[Scope] | Character | Optional scope to be sent with the requests. Usually used to specify which party of the third party system will the Token allow you to access.
+[Redirect URI] | Character | Optional redirect URI when using your own web server.
+---
+**$getToken** 
+Method called to get an authorization token. 
+Parameter | Type | Value
+-|-|-
+Callback Object|Item reference|Reference to the object which holds the 'successful' and 'error' callback methods
+[Callback Method Successful]|Character|Optional name of callback method when $getToken is successful
+[Callback Method Error]|Character|Optional name of callback method when $getToken is not successful
+[Remote Form Object]|Item reference|Optional reference to remote form instance if a remote form is used
+Remote Form Object should be passed only when using a remote form.
+Returns: Access Token, Refresh Token and Expiry date to Callback Method Successful OR row variable with more information to Callback Method Error, in the Callback Object.
 
-The first parameter is the **name** of the method you wish to call, the second parameter is the method's **parameter** (it can have only one).
+---
+**$setToken**
+Allows setting a token to the current instance of the oAuth2 object.
 
-#### sendMessageToJSClient
-Sends a message to the Remote Form. The form's **htmlcontrolMessage** method will be called, with the passed data.
+Parameter | Type | Value
+-|-|-
+Access Token| Character | Access token
+[Refresh Token]| Character | Optional refresh token
+[Expires on (#FDT)]| DateTime (#FDT) | Optional DateTime timestamp formatted in #FDT of the expiry date of the access token
+---
+**$getAuthCodeParameters**
+Returns: row variable containing the parameters that will be used for authorization code request
 
-Its parameter is a **Row** with the following columns:
+---
+**$setAuthCodeParameters**
+Allows adding extra parameters to the authorization code request.
 
-Column Name | Type       | Column Value
------------ | -----------| ---------------------
-messageID   | Character  | An identifier for the message.
-data        | Any        | The data to pass through to the JS client. Use a Row to send complex data.
-form        | Character  | _(Optional)_ The name of the form to pass the message to. If omitted, will _attempt_ to get the active form.
+Parameter | Type | Value
+-|-|-
+Key|Character|Parameter key e.g. Accept
+Value|Character|Parameter value e.g. application/json
+---
+**$clearToken**
+Clears the Access Token, Refresh Token and Expires On variables stored in the instantiated oAuth2 object.
 
-Example:
+---
+**$setManualAuthWindowCallback**
+Allows setting a specific callback method and instance for when the access token is sent back before the authorization window gets closed.
 
-    Do lRow.$define(messageID, form, data)
-    Do lRow.$assigncols("doSomething", "jsMyForm", iDataRow)
-    Do $cinst.$objs.oBrowser.$callMethod("sendMessageToJSClient", lRow)
+Parameter | Type | Value
+-|-|-
+Callback Method|Character|Name of the callback method
+Callback Instance|Item reference|Reference to the object which holds the callback method e.g. $cinst
 
-### loadForm
-Loads a Remote Form.
-
-Its parameter is a **Row**. The column names of which will be added as "data-<colname>" attributes of the omnisobject1 element.
-As such, it could likely contain the following columns:
-
-Column Name | Type       | Column Value
------------ | -----------| ---------------------
-omnislibrary| Character  | The name of the Omnis library containing the form.
-omnisclass  | Character  | The name of the Remote Form class.
-webserverurl| Character  | _(Optional)_ The URL to the Omnis web server plugin. Leave empty/omit to connect directly to the local Omnis instance.
-omnisserverandport| Character | _(Optional)_ $serverport/<ipaddress>:$serverport of Omnis server. Leave empty if using a direct connection.
-
-Example:
-
-    Do lRow.$define(omnislibrary, omnisclass)
-    Do lRow.$assigncols("myLibrary", "jsMyForm")
-    Do $cinst.$objs.oBrowser.$callMethod("loadForm", lRow)
-    
-    
-# Notes:
-
-### macOS only
-* The design window's context menu option to _Open Window..._ has extra processing which clears the whole execution stack (including any pending JS Client requests).
-If you use the context menu on macOS to test your window, you may find that the JS Client doesn't load.
-
-* Due to the threading model on macOS (oBrowser executes client code on the main thread), sending a synchronous disconnect message to Omnis causes hangs.
-    
-    * To avoid this, the JS Client disconnect message is sent to Omnis asynchronously - this does however mean that there's a chance the disconnect message _may_ not reach Omnis, and the Remote Task instance is not closed.
-        * This should not cause licensing issues, as all instances of oBrowser should use the same connection license.
-        * Make sure to set a **$timeout** on your Remote Task, so they'll be closed eventually. 
+---
