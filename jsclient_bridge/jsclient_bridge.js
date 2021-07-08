@@ -1,4 +1,5 @@
 var isMac = navigator.userAgent.indexOf("AppleWebKit") > -1;
+jOmnis.manualStartup = true;
 
 function JSCBridge() {
 
@@ -100,7 +101,7 @@ function JSCBridge() {
 			omnisObj.setAttribute("data-" + col, row[col]);
 		}
 
-		jOmnis.onLoad();
+		jOmnis.startup();
 	};
 
 

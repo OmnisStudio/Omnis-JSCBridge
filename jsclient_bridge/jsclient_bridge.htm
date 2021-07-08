@@ -1,41 +1,41 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" style="width: 100%; height: 100%;">
 <head>
-	<title></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
     <!-- JSC START -->
-    <link type="text/css" href="css/omn_dlg.css" rel="stylesheet" media="print,screen" />
-    <link type="text/css" href="css/omn_menu.css" rel="stylesheet" media="print, screen" />
-    <link type="text/css" href="css/smoothness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
-    <link type="text/css" href="css/slick.grid.css" rel="stylesheet" />
-    <link type="text/css" href="css/slick.columnpicker.css" rel="stylesheet" />
-    <link type="text/css" href="css/slick.pager.css" rel="stylesheet" />
-
-    <!-- Must occur after other stylesheets e.g. jquery-ui-1.8.15.custom.css, as it overrides values -->
-    <link type="text/css" href="css/omnis.css" rel="stylesheet"/>
-
-    <link type="text/css" href="css/native_switch.css" rel="stylesheet"/>
-    <link type="text/css" href="css/native_slider.css" rel="stylesheet"/>
-    <link type="text/css" href="css/native_list.css" rel="stylesheet"/>
-
-    <!-- Edit user.css to specify any CSS classes assigned using the $cssclassname property -->
+    <link href="css/all_comps_core.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
+    <link href="css/all_comps.css" rel="stylesheet">
     <link type="text/css" href="css/user.css" rel="stylesheet" media="print, screen" />
 
-    <!-- Omnis Studio JavaScript client scripts -->
-    <script type="text/javascript" src="scripts/ssz.js"></script>
-    <script type="text/javascript" src="scripts/omjsclnt.js"></script>
-    <script type="text/javascript" src="scripts/omjqclnt.js"></script>
-    <!-- JSC END -->
+    <script src="scripts/runtime.bundle.js"></script>
+    <script src="scripts/vendors_all_comps_core.bundle.js"></script>
+    <script src="scripts/vendors_core.bundle.js"></script>
+    <script src="scripts/all_comps_core.bundle.js"></script>
+    <script src="scripts/core.bundle.js"></script>
+    <script src="scripts/vendors_all_comps.bundle.js"></script>
+    <script src="scripts/all_comps.bundle.js"></script>
+    
 
-
-    <script type="text/javascript" src="../omn_list_base.js"></script>
 	<script type="text/javascript" src="../omnishtmlcontrol.js"></script>
     <script type="text/javascript" src="jsclient_bridge.js"></script>
-	
-</head>
 
-<body style="margin:0;" onunload="jOmnis.onUnload()">
-<div id="omnisobject1" style="position:absolute;top:0;left:0" data-webserverurl="" data-omnisserverandport="" data-omnislibrary="" data-omnisclass="" data-dss="'js320x480Portrait','js768x1024Portrait'" data-param1="" data-param2="" data-commstimeout="0">
-</div>
+    <!-- Edit the array below to add further client localization. The relevant language file should be in /scripts/locale/ -->
+    <script>var supportedLanguages = ["de", "es", "fr", "it"];</script>
+    
+    <!-- JSC END -->
+    
+    <title></title>
+</head>
+<body style="margin:0; overflow:auto; width:100%; height:100%;">
+    <div id="omnisobject1"
+        style="position:absolute; top:0; left:0; width: 100%; height: 100%;"
+        data-webserverurl="" data-omnisserverandport="" data-omnislibrary="" data-omnisclass="" 
+        data-themename="default" data-appid="myapp" 
+        data-dss="'js320x480Portrait','js768x1024Portrait'" data-param1="" data-param2="" data-commstimeout="0">
+    </div>
+
+
 </body>
 </html>
