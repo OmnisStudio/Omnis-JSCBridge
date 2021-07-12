@@ -1,5 +1,7 @@
+See other branches for alternative versions compatible with other Omnis Studio versions.
+
 # Requirements
-Omnis Studio **8.1.6** or later.
+Omnis Studio **10.1**.
 
 # Installation
 
@@ -10,11 +12,12 @@ Omnis Studio **8.1.6** or later.
     * **scripts**
     * **icons**
     * **images** 
+    * **themes**
 
 (this jsclient_bridge folder, with JS Client resources, can now be moved around as a complete component - e.g. added to a runtime tree)
 
-### Windows:
-Windows specifically requires some Chromium flags to be set, in order to allow CORS inside oBrowser
+### Chromium Flags:
+This control requires some Chromium flags to be set, in order to allow CORS inside oBrowser
 (to allow access to localhost from file:// URLs).
 
 Add the following to **config.json**, inside the **obrowser** section:
@@ -31,7 +34,7 @@ Add the following to **config.json**, inside the **obrowser** section:
 
 1) Add an **oBrowser** external component to your window.
 2) Set oBrowser's **$urlorcontrolname** property to '**jsclient_bridge**'.
-3) Edit oBrowser's **$htmlcontroloptions**, and set the **omnisclass** & **omnislibrary** columns.
+3) Edit oBrowser's **$htmlcontroloptions**, and set the **omnisclass**, **omnislibrary** and **serverport** columns.
 This will cause the form to be loaded automatically, and will also display the form in design mode.
     * _If you wish to load a form from another Omnis server, you'll also need to populate the **webserverurl** and **omnisserverandport** properties._
 
