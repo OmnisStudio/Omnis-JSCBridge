@@ -1,5 +1,11 @@
 var isMac = navigator.userAgent.indexOf("AppleWebKit") > -1;
 
+var origOnLoad = jOmnis.onLoad;
+
+jOmnis.onLoad = function() {
+	console.log("dummy onload");
+}
+
 function JSCBridge() {
 
 	/*** PRIVATE VARS ***/
@@ -92,6 +98,11 @@ function JSCBridge() {
 	 */
 	this.loadForm = function(row)
 	{
+
+		if (origOnLoad) {
+			jOmnis.onLoad = origOnLoad;
+			origOnLoad = null;
+		}
 		var omnisObj = document.getElementById("omnisobject1");
 
 		omnisObj.setAttribute("data-webserverurl", "http://127.0.0.1:" + omnisPort);
