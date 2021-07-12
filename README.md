@@ -1,5 +1,5 @@
 # Requirements
-Omnis Studio **8.1.6** or later.
+Omnis Studio **10.2** or later.
 
 # Installation
 
@@ -10,11 +10,12 @@ Omnis Studio **8.1.6** or later.
     * **scripts**
     * **icons**
     * **images** 
+    * **themes**
 
 (this jsclient_bridge folder, with JS Client resources, can now be moved around as a complete component - e.g. added to a runtime tree)
 
-### Windows:
-Windows specifically requires some Chromium flags to be set, in order to allow CORS inside oBrowser
+### Chromium Flags:
+This control requires some Chromium flags to be set, in order to allow CORS inside oBrowser
 (to allow access to localhost from file:// URLs).
 
 Add the following to **config.json**, inside the **obrowser** section:
