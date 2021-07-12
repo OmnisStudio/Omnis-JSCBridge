@@ -1,3 +1,5 @@
+See other branches for alternative versions compatible with other Omnis Studio versions.
+
 # Requirements
 Omnis Studio **10.2** or later.
 
