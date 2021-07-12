@@ -34,7 +34,7 @@ Add the following to **config.json**, inside the **obrowser** section:
 
 1) Add an **oBrowser** external component to your window.
 2) Set oBrowser's **$urlorcontrolname** property to '**jsclient_bridge**'.
-3) Edit oBrowser's **$htmlcontroloptions**, and set the **omnisclass** & **omnislibrary** columns.
+3) Edit oBrowser's **$htmlcontroloptions**, and set the **omnisclass**, **omnislibrary** and **serverport** columns.
 This will cause the form to be loaded automatically, and will also display the form in design mode.
     * _If you wish to load a form from another Omnis server, you'll also need to populate the **webserverurl** and **omnisserverandport** properties._
 
