@@ -1,7 +1,7 @@
 See other branches for alternative versions compatible with other Omnis Studio versions.
 
 # Requirements
-Omnis Studio **10.2** or later.
+Omnis Studio **10.2** or later, with JavaScript scripts of revision **31112** or later (patch scripts may be available [here](https://www.omnis.net/developers/resources/download/updates/jsscripts.jsp) if your version of 10.2 is an earlier revision than this).
 
 # Installation
 
