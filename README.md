@@ -150,16 +150,3 @@ Example:
     Do lRow.$define(omnislibrary, omnisclass)
     Do lRow.$assigncols("myLibrary", "jsMyForm")
     Do $cinst.$objs.oBrowser.$callMethod("loadForm", lRow)
-    
-    
-# Notes:
-
-### macOS only
-* The design window's context menu option to _Open Window..._ has extra processing which clears the whole execution stack (including any pending JS Client requests).
-If you use the context menu on macOS to test your window, you may find that the JS Client doesn't load.
-
-* Due to the threading model on macOS (oBrowser executes client code on the main thread), sending a synchronous disconnect message to Omnis causes hangs.
-    
-    * To avoid this, the JS Client disconnect message is sent to Omnis asynchronously - this does however mean that there's a chance the disconnect message _may_ not reach Omnis, and the Remote Task instance is not closed.
-        * This should not cause licensing issues, as all instances of oBrowser should use the same connection license.
-        * Make sure to set a **$timeout** on your Remote Task, so they'll be closed eventually. 
