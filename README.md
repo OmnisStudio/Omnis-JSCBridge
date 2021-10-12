@@ -13,6 +13,8 @@ Omnis Studio **10.2** or later, with JavaScript scripts of revision **31112** or
     * **icons**
     * **images** 
     * **themes**
+* Also copy the **studio** folder from Omnis' **iconsets** folder (in the application area) into **htmlcontrols/jsclient_bridge**.
+    
 
 (this jsclient_bridge folder, with JS Client resources, can now be moved around as a complete component - e.g. added to a runtime tree)
 
