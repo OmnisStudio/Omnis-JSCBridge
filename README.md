@@ -110,7 +110,7 @@ omnislibrary  | The name of the Omnis library containing the form to load automa
 omnisclass    | The name of the Remote Form class to load automatically. _(Required for automatic form loading)_
 webserverurl  | The URL to the Omnis web server plugin. _(Optional for automatic form loading)._ Omit to use the local Omnis server.
 omnisserverandport  | The **$serverport** or **ip-address:$serverport** of the Omnis server. _(Optional for automatic form loading)_ Omit to use the local Omnis server.
-serverport  | The **$serverport** Omnis. _(Optional)_ Only used for local connections, when _webserverurl_ is not provided. Only necessary if you've changed the **htmlControlPort** config.json option.
+serverport  | The **$serverport** of Omnis. _(Optional)_ Only used for local connections, when _webserverurl_ is not provided. Only necessary if you've changed the **htmlControlPort** config.json option.
 
 ## Methods
 Methods are called with oBrowser's **$callMethod** method.
