@@ -1,7 +1,7 @@
 See other branches for alternative versions compatible with other Omnis Studio versions.
 
 # Requirements
-Omnis Studio **10.2 rev31315** or later.
+Omnis Studio **10.22**.
 
 # Installation
 
@@ -152,3 +152,26 @@ Example:
     Do lRow.$define(omnislibrary, omnisclass)
     Do lRow.$assigncols("myLibrary", "jsMyForm")
     Do $cinst.$objs.oBrowser.$callMethod("loadForm", lRow)
+
+
+### forceCurrentDownloadComplete
+Finishes the current download requested by the client.
+*(Requires scripts of revision 31907 or later)*
+
+The JS Client File control uses a cookie to detect when a download completes. But cookies aren't supported when using file:// URLs (as Omnis htmlcontrols do), so the client is not able to automatically detect the completion of downloads when running in the JSC Bridge.
+
+If you are using the File control to download, you should call this method from oBrowser's **evBrowserFinishedDownload** event to notify the client to unlock its UI and allow further downloads.
+
+You may also need to call it from **evBrowserStartDownload**, if you don't always download the file there.
+
+Its parameter is a **Row**. The column *names* do not matter - only their *order*:
+
+Column Description | Type       | Column Value
+-------------------| -----------| ---------------------
+success            | Boolean    | If true, the download was successful.
+showErrorMessage   | Boolean    | **(Optional)** If true, and 'success' is false, show an error message to the user.
+
+Example:
+
+    On evBrowserFinishedDownload
+      Do $cobj.$callmethod("forceCurrentDownloadComplete",row(pErrorText="",kTrue))
