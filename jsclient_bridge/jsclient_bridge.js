@@ -142,13 +142,18 @@ function JSCBridge() {
 	/**
 	 * Can be called using oBrowser's "$callmethod()" to notify the JS Client that a download has finished, 
 	 * and the UI should be unlocked/more downloads can occur.
-	 * @param {boolean} success 									Whether the download was successful.
-	 * @param {boolean} [errorMessageOnFailure]	 	If true, and success is false, display an error message to the user.
+	 * @param {object} row  									An object converted from an Omnis row. 
+	 * 																				First member (col): Whether the download was successful.
+	 * 																				Second member (col) (OPTIONAL): If true, and success is false, display an error message to the user.
 	 */
-	this.forceCurrentDownloadComplete = function(success, errorMessageOnFailure)
+	this.forceCurrentDownloadComplete = function(row)
 	{
 			if (+OMNIS_SCRIPTS_REV < 31907)
 				console.log("JSC Bridge 'forceCurrentDownloadComplete' only exists in scripts from rev 31907");
+
+			const colNames = Object.keys(row);
+			const success = row[colNames[0]];
+			const errorMessageOnFailure = !!(colNames.length > 1 && row[colNames[1]]);
 
 			const formElem = document.body.querySelector("form.omnis-download-form");
 			if (formElem && formElem.downloadTask) {
